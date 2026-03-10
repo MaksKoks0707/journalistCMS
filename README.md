@@ -1,4 +1,18 @@
 # journalistCMS
+
+Aplikacja CMS dla dziennikarzy
+
+Funkcjonalność:
+## Dziennikarz:
+    - Może tworzyć wersje robocze artykułów
+    - Może publikować swoje artykuły
+    - Może przeglądać publiczne artykuły innych autorów
+## Czytelnik:
+    - Może przeglądać i komentować publiczne artykuły
+## Moderator:
+    - Zatwierdza artykuły i komentarze przed ich upublicznieniem
+    - Może usuwać istniejące artykuły
+
 - There's no point in standing around, we'll only be showered by more boulders. Ready your horses on the double
 - Be honest, are all of us, riding to our deaths?
 - Yes we are
