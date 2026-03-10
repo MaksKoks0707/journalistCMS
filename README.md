@@ -1,8 +1,5 @@
-# journalistCMS
+# Aplikacja CMS dla dziennikarzy
 
-Aplikacja CMS dla dziennikarzy
-
-Funkcjonalność:
 ## Dziennikarz:
 - Może tworzyć wersje robocze artykułów
 - Może publikować swoje artykuły
