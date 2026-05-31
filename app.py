@@ -142,6 +142,25 @@ def list_articles():
     articles = Article.query.filter_by(status=ArticleStatus.PUBLISHED).all()
     return jsonify([{"id": a.id, "title": a.title, "content": a.content} for a in articles])
 
+@app.route('/articles/<int:id>', methods=['GET'])
+def get_article(id):
+    art = Article.query.get_or_404(id)
+    return jsonify({
+        "id": art.id, 
+        "title": art.title, 
+        "content": art.content, 
+        "author_id": art.author_id,
+        "status": art.status.value
+    })
+
+@app.route('/articles/<int:id>/comments', methods=['GET'])
+def list_comments(id):
+    comments = Comment.query.filter_by(article_id=id).all()
+    return jsonify([
+        {"id": c.id, "content": c.content, "user_id": c.user_id} 
+        for c in comments
+    ])
+
 @app.route('/articles/<int:id>/comments', methods=['POST'])
 @role_required(UserRole.READER)
 def add_comment(id):
