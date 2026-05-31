@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request, jsonify
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity, get_jwt
 from models import db, User, Article, Comment, UserRole, ArticleStatus
@@ -6,9 +7,9 @@ from functools import wraps
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:admin@localhost/cms_db'
-app.config['JWT_SECRET_KEY'] = 'jhasgkdvuk1238o6t6AGAy67LOIK'
-app.config['CELERY_BROKER_URL'] = 'redis://localhost:6379/0'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('SQLALCHEMY_DATABASE_URI', 'postgresql://postgres:admin@localhost:5432/cms_db')
+app.config['JWT_SECRET_KEY'] = os.getenv('JWT_SECRET_KEY', 'jhasgkdvuk1238o6t6AGAy67LOIK')
+app.config['CELERY_BROKER_URL'] = os.getenv('CELERY_BROKER_URL', 'redis://localhost:6379/0')
 
 db.init_app(app)
 jwt = JWTManager(app)
