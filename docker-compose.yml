@@ -26,6 +26,7 @@ services:
     environment:
       - SQLALCHEMY_DATABASE_URI=postgresql://postgres:password@db:5432/cms_db
       - CELERY_BROKER_URL=redis://redis:6379/0
+      - JWT_SECRET_KEY=jhasgkdvuk1238o6t6AGAy67LOIK
     depends_on:
       - db
       - redis
@@ -37,6 +38,7 @@ services:
     environment:
       - SQLALCHEMY_DATABASE_URI=postgresql://postgres:password@db:5432/cms_db
       - CELERY_BROKER_URL=redis://redis:6379/0
+      - JWT_SECRET_KEY=jhasgkdvuk1238o6t6AGAy67LOIK
     depends_on:
       - db
       - redis
@@ -49,6 +51,7 @@ services:
     environment:
       - SQLALCHEMY_DATABASE_URI=postgresql://postgres:password@db:5432/cms_db
       - CELERY_BROKER_URL=redis://redis:6379/0
+      - JWT_SECRET_KEY=jhasgkdvuk1238o6t6AGAy67LOIK
     depends_on:
       - db
       - redis
