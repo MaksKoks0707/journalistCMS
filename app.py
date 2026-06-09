@@ -169,6 +169,20 @@ def add_comment(id):
     db.session.add(comment)
     db.session.commit()
     return jsonify({"msg": "Dodano komentarz, czeka na moderację"})
+    
+@app.route('/comments/<int:id>', methods=['DELETE'])
+@jwt_required()
+def delete_comment(id):
+    comment = Comment.query.get_or_404(id)
+    current_user_id = int(get_jwt_identity())
+    claims = get_jwt()
+    
+    if comment.user_id != current_user_id and claims.get("role") != UserRole.MODERATOR.value:
+        return jsonify({"msg": "Brak uprawnień"}), 403
+        
+    db.session.delete(comment)
+    db.session.commit()
+    return jsonify({"msg": "Komentarz usunięty"})
 
 if __name__ == '__main__':
     with app.app_context():
